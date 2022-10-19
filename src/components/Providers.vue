@@ -1,6 +1,6 @@
 <template>
   <section class="providers mb-4">
-    <h2>Providers</h2>
+    <h2>Поставщики</h2>
     <b-list-group v-if="isSimple">
       <b-list-group-item
         v-for="(provider, key) in providers" :key="key" :href="provider.url" :disabled="!provider.url"

@@ -1,10 +1,12 @@
 <template>
   <section class="items mb-4">
     <h2>
-      <span class="title">Items</span>
+      <span class="title">Элементы</span>
       <b-badge v-if="!api" pill variant="secondary ml-2">{{ items.length }}</b-badge>
       <SortButtons v-if="!api" class="ml-4" v-model="sort" />
     </h2>
+
+    <SearchBox class="mt-3 mb-2" v-model="searchTerm" placeholder="Фильтр элементов по названию" />
 
     <Pagination ref="topPagination" v-if="showPagination" :pagination="pagination" placement="top" @paginate="paginate" />
     <template v-if="allowFilter">
@@ -13,8 +15,8 @@
       </b-button>
       <b-collapse id="itemFilter" v-model="filtersOpen">
         <ItemFilter
-          v-if="filtersOpen" :stac="stac" :value="filters" @input="emitFilter"
-          :collectionOnly="true" v-bind="filterComponentProps"
+            v-if="filtersOpen" :stac="stac" :value="filters" @input="emitFilter"
+            :collectionOnly="true" v-bind="filterComponentProps"
         />
       </b-collapse>
     </template>
@@ -25,8 +27,8 @@
         <Item v-for="item in chunkedItems" :item="item" :key="item.href" />
       </b-card-group>
       <b-alert v-else :variant="hasFilters ? 'warning' : 'info'" show>
-        <template v-if="hasFilters">No items found for the given filters.</template>
-        <template v-else>No items available for this collection.</template>
+        <template v-if="hasFilters">Не найдены элементы по заданным фильтрам</template>
+        <template v-else>Извините, элементы коллекции не найдены.</template>
       </b-alert>
     </section>
 
@@ -53,7 +55,8 @@ export default {
     ItemFilter: () => import('./ItemFilter.vue'),
     Loading,
     Pagination,
-    SortButtons: () => import('./SortButtons.vue')
+    SortButtons: () => import('./SortButtons.vue'),
+    SearchBox: () => import('./SearchBox.vue'),
   },
   mixins: [
     sortCapabilitiesMixinGenerator(true)
@@ -97,6 +100,7 @@ export default {
       shownItems: this.chunkSize,
       filters: this.apiFilters,
       filtersOpen: false,
+      searchTerm: '',
       sort: 0
     };
   },
@@ -118,9 +122,23 @@ export default {
       if (!this.api && this.items.length > this.chunkSize) {
         return items.slice(0, this.shownItems);
       }
-      else {
-        return items;
+      // Filter
+      if (this.searchTerm) {
+        console.log(items);
+        items = items.filter(item => {
+          let title = Utils.titleForHref(item.href, true);
+          let haystack = [ title ];
+          if (item instanceof STAC) {
+            haystack.push(item.id);
+          }
+          else {
+            haystack.push(title);
+          }
+          return Utils.search(this.searchTerm, haystack);
+        });
       }
+      console.log(items);
+      return items;
     },
     showPagination() {
       if (this.api) {

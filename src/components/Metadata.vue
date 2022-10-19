@@ -35,7 +35,7 @@ export default {
         },
         title: {
             type: String,
-            default: 'Metadata'
+            default: 'Метаданные'
         }
     },
     computed: {

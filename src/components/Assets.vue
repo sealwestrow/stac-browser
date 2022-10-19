@@ -45,7 +45,7 @@ export default {
   computed: {
     displayTitle() {
       if (this.title === null) {
-        return this.definition ? 'Assets in Items' : 'Assets';
+        return this.definition ? 'Assets in Items' : 'Наборы';
       }
       else {
         return this.title;

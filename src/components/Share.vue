@@ -1,8 +1,8 @@
 <template>
   <div class="share mt-1">
     <b-button-group>
-      <b-button v-if="stacUrl" size="sm" variant="outline-primary" id="popover-link" title="Details about the STAC source"><b-icon-link /> <span class="button-label">Source</span></b-button>
-      <b-button size="sm" variant="outline-primary" id="popover-share" title="Share this page with others"><b-icon-share /> <span class="button-label">Share</span></b-button>
+      <b-button v-if="stacUrl" size="sm" variant="outline-primary" id="popover-link" title="Источники STAC"><b-icon-link /> <span class="button-label">Источники</span></b-button>
+      <b-button size="sm" variant="outline-primary" id="popover-share" title="Поделиться этой страницей с остальными"><b-icon-share /> <span class="button-label">Поделиться</span></b-button>
     </b-button-group>
     <b-popover
       v-if="stacUrl" target="popover-link" triggers="click blur" placement="bottom"

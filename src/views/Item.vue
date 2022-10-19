@@ -15,7 +15,7 @@
           </b-card>
         </section>
         <Assets v-if="hasAssets" :assets="assets" :context="data" :shown="shownAssets" @showAsset="showAsset" />
-        <Links v-if="additionalLinks.length > 0" title="Additional resources" :links="additionalLinks" />
+        <Links v-if="additionalLinks.length > 0" title="Дополнительные ресурсы" :links="additionalLinks" />
       </b-col>
       <b-col class="right">
         <section class="intro">
@@ -28,7 +28,7 @@
           <Keywords v-if="Array.isArray(data.properties.keywords) && data.properties.keywords.length > 0" :keywords="data.properties.keywords" />
         </section>
         <section class="item-collection card-list mb-4" v-if="collection">
-          <h2>Collection</h2>
+          <h2>Коллекция</h2>
           <Catalog :catalog="collection" :showThumbnail="false" />
         </section>
         <Providers v-if="data.properties.providers" :providers="data.properties.providers" />

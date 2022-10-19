@@ -1,10 +1,10 @@
 <template>
   <b-button-group title="Sort" size="sm">
-    <b-button @click="toggle(1)" variant="outline-primary" title="Sort in acending order (A-Z)" :pressed="value === 1 || (enforce && value !== -1)">
-      <b-icon-sort-alpha-down /> <span class="button-label">Ascending</span>
+    <b-button @click="toggle(1)" variant="outline-primary" title="Сортировать в алфавитном порядке по возрастанию (A-Z)" :pressed="value === 1 || (enforce && value !== -1)">
+      <b-icon-sort-alpha-down /> <span class="button-label">По возрастанию</span>
     </b-button>
-    <b-button @click="toggle(-1)" variant="outline-primary" title="Sort in descending order (Z-A)" :pressed="value === -1">
-      <b-icon-sort-alpha-up /> <span class="button-label">Descending</span>
+    <b-button @click="toggle(-1)" variant="outline-primary" title="Сортировать в алфавитном порядке по убыванию (Z-A)" :pressed="value === -1">
+      <b-icon-sort-alpha-up /> <span class="button-label">По убыванию</span>
     </b-button>
   </b-button-group>
 </template>

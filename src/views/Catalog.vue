@@ -3,7 +3,7 @@
     <b-row>
       <b-col class="meta">
         <section class="intro">
-          <h2>Description</h2>
+          <h2>Описание</h2>
           <DeprecationNotice v-if="data.deprecated" :data="data" />
           <AnonymizedNotice v-if="data['anon:warning']" :warning="data['anon:warning']" />
           <ReadMore v-if="data.description" :lines="10">
@@ -37,7 +37,7 @@
         <Assets v-if="hasItemAssets && !hasItems" :assets="data.item_assets" :definition="true" />
         <Providers v-if="hasProviders" :providers="data.providers" />
         <Metadata title="Metadata" class="mb-4" :type="data.type" :data="data" :ignoreFields="ignoredMetadataFields" />
-        <Links v-if="additionalLinks.length > 0" title="Additional resources" :links="additionalLinks" />
+        <Links v-if="additionalLinks.length > 0" title="Дополнительные ресурсы" :links="additionalLinks" />
       </b-col>
       <b-col class="catalogs-container" v-if="hasCatalogs">
         <Catalogs :catalogs="catalogs" :hasMore="hasMoreCollections" @loadMore="loadMoreCollections" />

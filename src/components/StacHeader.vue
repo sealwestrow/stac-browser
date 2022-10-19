@@ -9,19 +9,19 @@
         <span class="title">{{ title }}</span>
       </h1>
       <p class="lead" v-if="url || isSearchPage()">
-        <span class="in mr-3" v-if="containerLink">in <StacLink :data="containerLink" /></span>
+        <span class="in mr-3" v-if="containerLink">в <StacLink :data="containerLink" /></span>
         <b-button-group>
-          <b-button v-if="parentLink" :to="toBrowserPath(parentLink.href)" :title="`Go to parent > ${parentLink.title}`" variant="outline-primary" size="sm">
-            <b-icon-arrow-90deg-up /> <span class="button-label prio">Go to Parent</span>
+          <b-button v-if="parentLink" :to="toBrowserPath(parentLink.href)" :title="`Перейти к родителю > ${parentLink.title}`" variant="outline-primary" size="sm">
+            <b-icon-arrow-90deg-up /> <span class="button-label prio">Перейти к родителю</span>
           </b-button>
-          <b-button v-if="collectionLink" :to="toBrowserPath(collectionLink.href)" :title="`Go to collection > ${collectionLink.title}`" variant="outline-primary" size="sm">
-            <b-icon-folder-symlink /> <span class="button-label prio">Go to Collection</span>
+          <b-button v-if="collectionLink" :to="toBrowserPath(collectionLink.href)" :title="`Перейти к коллекции > ${collectionLink.title}`" variant="outline-primary" size="sm">
+            <b-icon-folder-symlink /> <span class="button-label prio">Перейти к коллекции</span>
           </b-button>
-          <b-button variant="outline-primary" size="sm" v-b-toggle.sidebar title="Browse">
-            <b-icon-book /> <span class="button-label prio">Browse</span>
+          <b-button variant="outline-primary" size="sm" v-b-toggle.sidebar title="Просмотреть">
+            <b-icon-book /> <span class="button-label prio">Просмотреть</span>
           </b-button>
-          <b-button v-if="supportsSearch && !isSearchPage()" variant="outline-primary" size="sm" :to="searchBrowserLink" title="Search">
-            <b-icon-search /> <span class="button-label prio">Search</span>
+          <b-button v-if="supportsSearch && !isSearchPage()" variant="outline-primary" size="sm" :to="searchBrowserLink" title="Искать">
+            <b-icon-search /> <span class="button-label prio">Искать</span>
           </b-button>
         </b-button-group>
       </p>
